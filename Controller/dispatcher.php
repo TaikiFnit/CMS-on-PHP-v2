@@ -41,10 +41,6 @@ class dispatcher {
 		$controller = basename($controller, '.html');
 		$controller = basename($controller, '.php');
 
-		var_dump($params);
-
-		/*
-
 		// Controllerのインスタンス化
 		switch($controller) {
 			// コントロールページの表示
@@ -53,12 +49,14 @@ class dispatcher {
 			case 'put':
 			case 'delete':
 				require_once $this->sysRoot . '/Controller/staticController.php';
-				$controllerInstance = new staticController($this->sysRoot);
+				$controllerInstance = new staticController($this->sysRoot, $controller, $params[3]);
 				break;
 
 			case 'news':
 				// newsに対するCRUD
-			break;
+				require_once $this->sysRoot . '/Controller/newsController.php';
+				$controllerInstance = new newsController($this->sysRoot, $params[2], $_SERVER["REQUEST_METHOD"]);
+				break;
 
 			default: 
 				header('Location: /');
@@ -67,7 +65,6 @@ class dispatcher {
 		}
 
 		$controllerInstance->run();
-		*/
 	}
 }
 
