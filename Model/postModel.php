@@ -20,29 +20,39 @@ class postModel extends appModel
 
 	function run() {
 
-		echo "fnit";
-
-		$updir = $this->sysRoot . '/public/news_image/';
-
-		// 画像をpublic/news_images/にほぞんする　
-		$imageName1 = $_FILES['data']['image1'];
-		move_uploaded_file($_FILES['data']['tmp_name'], $updir . $imageName1);
-
-		echo $_FILES['data']['error'];
-
+		// 記事番号を取得
 		$checkNewsId = 'select max(news_id) as id from news where date_format(`created`, "%Y") = ' . date('Y', strtotime($this->postData['created'])) . ';';
-
 		$id = $this->fetch($this->dbh, $checkNewsId)[0]['id'];
 
 		if($id != null) {
 			// news番号をインクリメント
 			$id += 1;
 		}
+		else {
+			$id = 1;
+		}
 
-		$sql = 'insert into news(news_id, title, content, team, images, image_src1, image_src2, image_alt1, image_alt2) values(:news_id, :title, :content, :team, :images, :image_src1, :image_src2, :image_alt1, :image_alt2)';	
+		$updir = $this->sysRoot . '/public/' . NEWS_IMAGE_PATH;
 
+		$imageName = array();
 
-		exit;
+		// 画像の枚数分だけループ
+		for($i = 0; $i < $this->postData['images']; $i++) {
 
+			// the class to get the filename extension
+			$info = new SplFileInfo($_FILES['image1']['name']);
+
+			// define the image name according to its news_id.
+			$imageName[$i] = $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
+
+			// 画像をpublic/news_images/にsave
+			move_uploaded_file($_FILES['image' . ((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);
+		}
+
+		$sql = 'insert into news(news_id, title, content, author, created, team, images, image_src1, image_src2, image_alt1, image_alt2) values(:news_id, :title, :content, :author, :created, :team, :images, :image_src1, :image_src2, :image_alt1, :image_alt2)';	
+
+		$values = array(':news_id'=> $id, ':title'=> $this->postData['title'], ':content'=> $this->postData['content'], ':author'=> $this->postData['author'], 'created'=> $this->postData['created'], ':team'=> $this->postData['team'], ':images'=> $this->postData['images'], ':image_src1'=> $imageName[0], ':image_src2'=> $imageName[1], ':image_alt1'=> $this->postData['image_alt1'], ':image_alt2'=> $this->postData['image_alt2']);
+
+		return array('result'=> $this->insert($this->dbh, $sql, $values));
 	}
 }

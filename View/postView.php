@@ -12,6 +12,11 @@
 		</div>
 
 		<div>
+			<label for="author">author: </label>
+			<input type="text" name="author" id="author">
+		</div>
+
+		<div>
 		<label for="created">Created: </label>
 		<input type="date" name="created" id="created">
 		</div>

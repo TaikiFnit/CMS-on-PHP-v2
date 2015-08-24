@@ -30,4 +30,15 @@ class appModel
 
 		return $stmt->fetchAll();
 	}
+
+	protected function insert($dbh, $sql, $values) {
+
+		$stmt = $dbh->prepare($sql);
+
+		foreach ($values as $key => $value) {
+			$stmt->bindValue($key, $value);
+		}
+
+		return $stmt->execute();
+	}
 }
