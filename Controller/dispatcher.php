@@ -45,6 +45,7 @@ class dispatcher {
 		switch($controller) {
 			// コントロールページの表示
 			case 'index':
+			case 'get':
 			case 'post':
 			case 'put':
 			case 'delete':

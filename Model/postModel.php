@@ -21,8 +21,10 @@ class postModel extends appModel
 	function run() {
 
 		// 記事番号を取得
-		$checkNewsId = 'select max(news_id) as id from news where date_format(`created`, "%Y") = ' . date('Y', strtotime($this->postData['created'])) . ';';
-		$id = $this->fetch($this->dbh, $checkNewsId)[0]['id'];
+		$checkNewsId = 'select max(news_id) as id, date_format(`created`, "%Y") as year from news where date_format(`created`, "%Y") = ' . date('Y', strtotime($this->postData['created'])) . ';';
+		$results = $this->fetch($this->dbh, $checkNewsId);
+		$id = $results[0]['id'];
+		$year = $results[0]['year'];
 
 		if($id != null) {
 			// news番号をインクリメント
@@ -43,7 +45,7 @@ class postModel extends appModel
 			$info = new SplFileInfo($_FILES['image1']['name']);
 
 			// define the image name according to its news_id.
-			$imageName[$i] = $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
+			$imageName[$i] = $year . '-' . $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
 
 			// 画像をpublic/news_images/にsave
 			move_uploaded_file($_FILES['image' . ((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);

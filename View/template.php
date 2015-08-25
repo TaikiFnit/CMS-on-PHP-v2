@@ -12,10 +12,6 @@
 
 <h1>IRC Control Panel</h1>	
 
-<table id="newsIndexTable">
-
-</table>
-
 </header>
 
 <?php include $this->filePath; ?>

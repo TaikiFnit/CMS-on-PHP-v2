@@ -1,6 +1,6 @@
 <main role="main">
 
-	<form name="postForm" id="postForm" method="post" action="/news/" enctype="multipart/form-data">
+	<form name="postForm" id="postForm" method="post" action="" enctype="multipart/form-data">
 		<div>
 			<label for="title">Title: </label>
 			<input type="text" name="title" id="title">
@@ -50,7 +50,9 @@
 			<input type="text" name="image_alt2" id="image_alt2">
 		</div>
 
-		<button type="submit" id="send">Send!</button>
+		<button type="button" id="send">Send!</button>
 	</form>
 
 </main>
+
+<script src="/javascripts/postScript.js"></script>

@@ -23,12 +23,16 @@ class newsController
 		// HTTP METHOD に対応したModelをインスタンス化
 		require_once $this->sysRoot . '/Model/' . mb_strtolower($this->method) . 'Model.php';
 
+		// define class name
 		$className = mb_strtolower($this->method) . 'Model';
 
+		// instance the model
 		$methodModel = new $className($this->sysRoot, $this->id);
 
+		// run the func
 		$response = $methodModel->run();
 
+		// display the data as json
 		echo json_encode($response);
 	}
 }
