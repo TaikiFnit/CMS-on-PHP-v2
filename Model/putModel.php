@@ -20,11 +20,10 @@ class putModel extends appModel
 
 	function run() {
 
-		// 記事番号を取得
+		$sql = 'update news set title = :title, content = :content, author = :author, created = :created, team = :team, images = :images, image_src1 = :image_src1, image_src2 = :image_src2, image_alt1 = :image_alt1, image_alt2 = :image_alt2 where id = :id';
 
-		echo $this->putData['fnit'];
+		$values = array(':id'=> $this->id, ':title'=> $this->putData['title'], ':content'=> $this->putData['content'], ':author'=> $this->putData['author'], 'created'=> $this->putData['created'], ':team'=> $this->putData['team'], ':images'=> $this->putData['images'], ':image_src1'=> $this->putData['image_src1'], ':image_src2'=> $this->putData['image_src2'], ':image_alt1'=> $this->putData['image_alt1'], ':image_alt2'=> $this->putData['image_alt2']);
 
-		var_dump($this->putData);
-
+		return array('result'=> $this->insert($this->dbh, $sql, $values));
 	}
 }

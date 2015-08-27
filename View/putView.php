@@ -1,6 +1,6 @@
 <main role="main">
 
-	<form name="putForm" id="putForm" action="/news/" enctype="multipart/form-data">
+	<form name="putForm" id="putForm" action="/news/">
 		<div>
 			<label for="title">Title: </label>
 			<input type="text" name="title" id="title">
@@ -37,20 +37,22 @@
 		</div>
 
 		<div>
-			<label for="image1">Image1: </label>
-			<input type="file" name="image1" id="image1">
+			<label for="image_src1">Image_src1: </label>
+			<input type="text" name="image_src1" id="image_src1">
 			<label for="image1">Image1 Alt: </label>
 			<input type="text" name="image_alt1" id="image_alt1">
 		</div>
 
 		<div>
-			<label for="image2">Image2: </label>
-			<input type="file" name="image2" id="image2">
+			<label for="image_src2">Image_src2: </label>
+			<input type="text" name="image_src2" id="image_src2">
 			<label for="image2">Image2 Alt:</label>
 			<input type="text" name="image_alt2" id="image_alt2">
 		</div>
 
-		<button type="submit" id="send">Send!</button>
+		<input type="hidden" name="id" id="id">
+
+		<button type="button" id="send">Send!</button>
 	</form>
 
 </main>

@@ -1,9 +1,4 @@
-$(function() {
-
-
-
-});
-
+// get the id from end of url
 function getRestId() {
 	
 	var pathName = location.pathname;
@@ -13,6 +8,7 @@ function getRestId() {
 	return pathName[pathName.length - 1];
 }
 
+// get the news data
 function getNewsData(callback) {
 
 	$.ajax({

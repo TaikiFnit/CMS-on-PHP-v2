@@ -9,12 +9,6 @@ class dispatcher {
 
 	function __construct($s) {
 		$this->sysRoot = $s;
-
-		/* helper's func
-		require_once $this->sysRoot . '/Controller/helpers.php';
-
-		$this->helpers = new helpers($this->sysRoot);
-		*/
 	}
 
 	function run() {

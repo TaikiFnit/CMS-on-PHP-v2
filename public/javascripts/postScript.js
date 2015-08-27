@@ -11,7 +11,7 @@ $(function() {
 
 		$.ajax({
 			url: '/news/',
-			method: 'post',
+			method: 'PUT',
 			dataType: 'json',
 			// dataとしてformDataを送信する設定
 			data: formData,
