@@ -13,6 +13,13 @@ class dispatcher {
 
 	function run() {
 
+		// authoraization 
+		require_once $this->sysRoot . '/Auth/authCheck.php';
+
+		// redirect if user is not logined
+		$auth = new authCheck();
+		$auth->isLogined();
+
 		// 末端の / を削除
 		if($_SERVER['REQUEST_URI'] != null) {
 			$param = rtrim($_SERVER['REQUEST_URI'], '/');
@@ -51,6 +58,11 @@ class dispatcher {
 				// newsに対するCRUD
 				require_once $this->sysRoot . '/Controller/newsController.php';
 				$controllerInstance = new newsController($this->sysRoot, $params[2], $_SERVER["REQUEST_METHOD"]);
+				break;
+
+			case 'login':
+				require_once $this->sysRoot . '/Controller/loginController.php';
+				$controllerInstance = new loginController($this->sysRoot, $_SERVER["REQUEST_METHOD"])
 				break;
 
 			default: 
