@@ -18,11 +18,12 @@ class getModel extends appModel
 
 		if($this->id == '*') {
 			$sql = 'select * from news';
-			return $this->fetch($this->dbh, $sql);
+			return $this->fetch($this->dbh, $sql, array());
 		}
 		else {
-			$sql = 'select * from news where id = ' . $this->id;
-			return $this->fetch($this->dbh, $sql)[0];
+			$sql = 'select * from news where id = :id';
+			$values = array(':id'=> $this->id);
+			return $this->fetch($this->dbh, $sql, $values)[0];
 		}
 	}
 }

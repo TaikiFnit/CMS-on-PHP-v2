@@ -22,9 +22,13 @@ class appModel
 		}
 	}
 
-	protected function fetch($dbh, $sql) {
+	protected function fetch($dbh, $sql, $values) {
 
 		$stmt = $dbh->prepare($sql);
+
+		foreach ($values as $key => $value) {
+			$stmt->bindValue($key, $value);
+		}
 
 		$stmt->execute();
 

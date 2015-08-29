@@ -6,25 +6,32 @@
 class loginController {
 
 	private $sysRoot;
-	private $method;
 
-	function __construct($s, $m)
+	function __construct($s)
 	{
 		$this->sysRoot = $s;
-		$this->method = $m;
 	}
 
 	public function run() {
 
-		switch($this->method) {
-			case 'GET':
+		require_once $this->sysRoot . '/Model/appModel.php';
+		require_once $this->sysRoot . '/Model/loginModel.php';
 
-				break;
+		$loginModel = new loginModel($this->sysRoot, $_POST);
 
-			case 'POST':
+		$loginData = $loginModel->run();
 
-				break;
+		var_dump($loginData);
+		exit;
+
+		if(!empty($loginData)) {
+			// success to login
+			$_SESSION['id'] = $loginData['id'];
+			header('Location: /');
 		}
-
+		else {
+			// faild to login
+			header('Location: /login');	
+		}
 	}
 }
