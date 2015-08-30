@@ -19,6 +19,14 @@ class authCheck {
 
 		if(isset($_SESSION['id'])) {
 			// this user is already logged in.
+
+			if ($this->controller == 'login') {
+				// this user try to login
+				// but already logged in.
+				header('Location: /');
+				return false;
+			}
+
 			return true;
 		}
 

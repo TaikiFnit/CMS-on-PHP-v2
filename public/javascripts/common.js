@@ -1,3 +1,7 @@
+$(function() {
+	$.material.init();
+});
+
 // get the id from end of url
 function getRestId() {
 	

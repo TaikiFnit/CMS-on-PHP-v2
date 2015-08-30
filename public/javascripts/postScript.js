@@ -11,7 +11,7 @@ $(function() {
 
 		$.ajax({
 			url: '/news/',
-			method: 'PUT',
+			method: 'POST',
 			dataType: 'json',
 			// dataとしてformDataを送信する設定
 			data: formData,
@@ -22,6 +22,14 @@ $(function() {
 			
 			success: function(data) {
 				console.log(data);
+
+				if(data.result) {
+					alert('Success.');	
+					location.href = '/';
+				}
+				else {
+					alert('Faild.');
+				}
 			},
 			error: function(err) {
 				console.log(err);

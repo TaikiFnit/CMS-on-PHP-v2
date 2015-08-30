@@ -1,10 +1,18 @@
-<main role="main">
 
-<table id="newsIndexTable" border="1">
+<main role="main" class="container">
 
-</table>
+	<ul class="breadcrumb">
+	    <li class="active">Home</li>
+	</ul>
 
-<a href="/post">post</a>
+	<section class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">News List</h2>
+		</div>
+		<div class="panel-body">
+			<table id="newsIndexTable" class="table table-bordered"></table>
+		</div>
+	</section>
 
 </main>
 

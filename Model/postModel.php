@@ -22,7 +22,7 @@ class postModel extends appModel
 
 		// 記事番号を取得
 		$checkNewsId = 'select max(news_id) as id, date_format(`created`, "%Y") as year from news where date_format(`created`, "%Y") = ' . date('Y', strtotime($this->postData['created'])) . ';';
-		$results = $this->fetch($this->dbh, $checkNewsId);
+		$results = $this->fetch($this->dbh, $checkNewsId, array());
 		$id = $results[0]['id'];
 		$year = $results[0]['year'];
 
