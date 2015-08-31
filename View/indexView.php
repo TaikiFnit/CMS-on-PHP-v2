@@ -2,7 +2,7 @@
 <main role="main" class="container">
 
 	<ul class="breadcrumb">
-	    <li class="active">Home</li>
+	    <li class="active">Index</li>
 	</ul>
 
 	<section class="panel panel-primary">

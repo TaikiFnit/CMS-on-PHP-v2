@@ -1,28 +1,23 @@
-$(function() {
-
-	// view the news data
-	getNewsData(function (err, data) {
-
-		if(!err && !data) {
-			location.href = '/';
-			return;
-		}
-
-		$('.deleteViewArea').append(JSON.stringify(data));
-	});
-});
-
 $('#deleteForm #send').on('click', function() {
 
-	$.ajax({
-		url: '/news/' + getRestId(),
-		method: 'DELETE',
-		datatype: 'json',
-		success: function(data) {
-			console.log(data);
-		},
-		error: function(err) {
-			console.log(err);
-		}
-	});
+	if(window.confirm('本当に削除しますか?')) {
+
+		$.ajax({
+			url: '/news/' + getRestId(),
+			method: 'DELETE',
+			dataType: 'json',
+			success: function(data) {
+				if(data.result == true) {
+					alert('success');
+					location.href = '/';
+				}
+				else if(data.result == false){
+					alert('faild');
+				}
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+	}
 });

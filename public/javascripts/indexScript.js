@@ -14,7 +14,7 @@ $(function() {
 
 				code += '<tr>'
 
-				code += '<th>id</th><th>news_id</th><th>title</th><th>team</th><th>images</th><th>control</th>';
+				code += '<th>ID</th><th>タイトル</th><th>作成日</th><th>チーム</th><th>画像の数</th><th>Actions</th>';
 
 				code += '</tr>';
 
@@ -22,15 +22,15 @@ $(function() {
 					code += '<tr>';
 
 					code += '<td>' + data[i].id + '</td>';
-					code += '<td>' + data[i].news_id + '</td>';
 					code += '<td>' + data[i].title + '</td>';
+					code += '<td>' + data[i].created + '</td>';
 					code += '<td>' + data[i].team + '</td>';
 					code += '<td>' + data[i].images + '</td>';
 					code += '<td>';
 					code += '<div class="dropdown">';
-					code += '<button type="button" class="btn btn-info btn-sm btn-flat">View</button>';
+					//code += '<button type="button" class="btn btn-info btn-sm btn-flat">View</button>';
 					code += '<button type="button" id="button' + data[i].id + '" class="btn btn-info btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-					code += '<span class="caret"></span>';
+					code += 'Action <span class="caret"></span>';
 					code += '</button>';
 					code += '<ul class="dropdown-menu" aria-labelledby="button' + data[i].id + '">';
 					code += '<li><a href="/get/' + data[i].id + '">View</a></li>';

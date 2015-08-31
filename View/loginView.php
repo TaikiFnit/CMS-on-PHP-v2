@@ -1,16 +1,18 @@
-<main role="main">
+<main role="main" class="container">
 
 <form action="/login" method="POST">
-<div>
+<div class="form-group">
 <label for="name">Name: </label>
-<input type="text" name="name" id="name" placeholder="name">
+<input type="text" name="name" id="name" class="form-control" placeholder="name">
 </div>
-<div>
+<div class="form-group">
 <label for="password">Password: </label>
-<input type="password" name="password" id="password">
+<input type="password" name="password" id="password" class="form-control">
 </div>
 
-<input type="submit">
+<div class="form-group">
+<input type="submit" id="send" class="btn btn-primary">
+</div>
 
 </main>
 

@@ -3,6 +3,8 @@ $(function() {
 	// 記事の送信
 	$('#postForm #send').on('click', function() {
 
+		if(window.confirm('本当に記事を追加しますか?')) {
+
 		// form　dataを取得
 		var form = $('#postForm').get()[0];
 
@@ -35,5 +37,40 @@ $(function() {
 				console.log(err);
 			}
 		});
+		}
 	});
+
+	$('#images').val(0);
+	setVal();
+
+	$('#images').change(function () {
+		setVal()
+	});
+
+	function setVal() {
+		if($('#images').val() <= 0) {
+			$('#images').val(0);
+		}
+
+		if($('#images').val() == 0) {
+			$('.image1').fadeOut('fast');
+			$('.image2').fadeOut('fast');
+		}
+
+		if($('#images').val() == 1) {
+			$('.image1').fadeIn('fast');
+			$('.image2').fadeOut('fast');
+		}
+
+		if($('#images').val() == 2) {
+			$('.image1').fadeIn('fast');
+			$('.image2').fadeIn('fast');
+		}
+
+		if($('#images').val() >= 3) {
+			$('.image1').fadeIn('fast');
+			$('.image2').fadeIn('fast');
+			$('#images').val(2);
+		}
+	}
 });

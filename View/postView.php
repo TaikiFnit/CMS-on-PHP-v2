@@ -1,40 +1,40 @@
 <main role="main" class="container">
 
 	<ul class="breadcrumb">
-	    <li><a href="/">Home</a></li>
-	    <li class="active">Post</li>
+	    <li><a href="/">Index</a></li>
+	    <li class="active">記事作成</li>
 	</ul>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h2 class="panel-title">Post</h2>
+			<h2 class="panel-title">記事作成</h2>
 		</div>
 
 		<div class="panel-body">
 
-			<form name="postForm" id="postForm" method="post" action="" enctype="multipart/form-data" class="">
+			<form name="postForm" id="postForm" method="post" action="" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="title">Title: </label>
+					<label for="title">タイトル: </label>
 					<input type="text" name="title" id="title" class="form-control" placeholder="Title">
 				</div>
 
 				<div class="form-group"> 
-					<label for="content">Content: </label>
-					<textarea name="content" id="content" class="form-control"></textarea>
+					<label for="content">本文: </label>
+					<textarea name="content" id="content" class="form-control" rows="10" placeholder="Content"></textarea>
 				</div>
 
 				<div class="form-group">
-					<label for="author">author: </label>
-					<input type="text" name="author" id="author" class="form-control">
+					<label for="author">記載者: </label>
+					<input type="text" name="author" id="author" class="form-control" placeholder="E.X">
 				</div>
 
 				<div class="form-group">
-				<label for="created">Created: </label>
-				<input type="date" name="created" id="created" class="form-control">
+				<label for="created">作成日: </label>
+				<input type="date" name="created" id="created" class="form-control" placeholder="2015/01/01">
 				</div>
 
-				<div>
-					<label for="team">Team: </label>
+				<div class="form-group">
+					<label for="team">チーム: </label>
 					<select name="team" id="team" class="form-control">
 						<option value="0">IRC</option>
 						<option value="1">ハード班</option>
@@ -43,26 +43,36 @@
 					</select>
 				</div>
 
-				<div>
-					<label for="images">Images Number</label>
+				<div class="form-group">
+					<label for="images">画像の数</label>
 					<input type="number" name="images" id="images" class="form-control">
 				</div>
 
-				<div>
-					<label for="image1">Image1: </label>
-					<input type="file" name="image1" id="image1" class="form-control">
-					<label for="image1">Image1 Alt: </label>
-					<input type="text" name="image_alt1" id="image_alt1" class="form-control">
+				<div class="image1">
+					<div class="form-group">
+						<label for="image1">画像1: </label>
+						<input type="file" name="image1" id="image1" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="image_alt1">画像1のAlt属性: </label>
+						<input type="text" name="image_alt1" id="image_alt1" class="form-control">
+					</div>
 				</div>
 
-				<div>
-					<label for="image2">Image2: </label>
-					<input type="file" name="image2" id="image2" class="form-control">
-					<label for="image2">Image2 Alt:</label>
-					<input type="text" name="image_alt2" id="image_alt2" class="form-control">
+				<div class="image2">
+					<div class="form-group">
+						<label for="image2">画像2: </label>
+						<input type="file" name="image2" id="image2" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="image_alt2">画像2のAlt属性:</label>
+						<input type="text" name="image_alt2" id="image_alt2" class="form-control">
+					</div>
 				</div>
 
-				<button type="button" id="send" class="btn btn-primary btn-raised">Send!</button>
+				<div class="form-group">
+					<button type="button" id="send" class="btn btn-primary btn-raised">Create!</button>
+				</div>
 			</form>
 		</div>
 	</div>
