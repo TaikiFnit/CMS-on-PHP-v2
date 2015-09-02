@@ -3,7 +3,7 @@
 /**
 * deleteModel
 */
-class deleteModel extends appModel
+class deleteNewsModel extends appModel
 {
 	private $sysRoot;
 	private $dbh;

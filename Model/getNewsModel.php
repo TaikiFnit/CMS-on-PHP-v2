@@ -1,9 +1,9 @@
 <?php
 
 /**
-* getModel
+* getNewsModel
 */
-class getModel extends appModel
+class getNewsModel extends appModel
 {
 	private $dbh;
 	private $id;

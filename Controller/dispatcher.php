@@ -50,6 +50,7 @@ class dispatcher {
 				case 'post':
 				case 'put':
 				case 'delete':
+				case 'imgControll':
 					// pages
 					require_once $this->sysRoot . '/Controller/staticController.php';
 					$controllerInstance = new staticController($this->sysRoot, $controller, $params[3]);
@@ -59,6 +60,12 @@ class dispatcher {
 					// newsに対するCRUD
 					require_once $this->sysRoot . '/Controller/newsController.php';
 					$controllerInstance = new newsController($this->sysRoot, $params[2], $_SERVER["REQUEST_METHOD"]);
+					break;
+
+				case 'img':
+					// imgに対するCRUD
+					require_once $this->sysRoot . '/Controller/imgController.php';
+					$controllerInstance = new imgController($this->sysRoot, $params[2], $_SERVER['REQUEST_METHOD']);
 					break;
 
 				case 'login':

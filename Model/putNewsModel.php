@@ -3,7 +3,7 @@
 /**
 * postModel
 */
-class putModel extends appModel
+class putNewsModel extends appModel
 {
 	private $sysRoot;
 	private $dbh;

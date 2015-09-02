@@ -1,18 +1,18 @@
 <?php 
 
 /**
-* newsController
+* imgController
 */
-class newsController
+class imgController
 {
 	private $sysRoot;
-	private $id;
+	private $imgName;
 	private $method;
 	
 	function __construct($s, $i, $m)
 	{
 		$this->sysRoot = $s;
-		$this->id = $i;
+		$this->imgName = $i;
 		$this->method = $m;
 	}
 
@@ -21,13 +21,13 @@ class newsController
 		require_once $this->sysRoot . '/Model/appModel.php';
 
 		// HTTP METHOD に対応したModelをインスタンス化
-		require_once $this->sysRoot . '/Model/' . mb_strtolower($this->method) . 'NewsModel.php';
+		require_once $this->sysRoot . '/Model/' . mb_strtolower($this->method) . 'ImgModel.php';
 
 		// define class name
-		$className = mb_strtolower($this->method) . 'NewsModel';
+		$className = mb_strtolower($this->method) . 'ImgModel';
 
 		// instance the model
-		$methodModel = new $className($this->sysRoot, $this->id);
+		$methodModel = new $className($this->sysRoot, $this->imgName);
 
 		// run the func
 		$response = $methodModel->run();

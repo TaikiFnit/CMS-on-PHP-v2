@@ -57,6 +57,7 @@
         <ul class="dropdown-menu">
           <li><a href="/">ホーム</a></li>
           <li><a href="/post">記事作成</a></li>
+          <li><a href="/imgControll">画像管理</a>          
           <li class="divider"></li>
           <li><a href="/logout">ログアウト</a></li>
         </ul>
