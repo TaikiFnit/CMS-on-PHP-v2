@@ -14,6 +14,7 @@
 		</div>
 	</section>
 
+	<a href="/post" class="postLink"><button type="button" class="btn btn-fab btn-raised btn-material-red"><i class="glyphicon glyphicon-pencil"></i></button></a>
 </main>
 
 <script src="/javascripts/indexScript.js"></script>

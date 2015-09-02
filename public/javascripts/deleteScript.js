@@ -8,11 +8,11 @@ $('#deleteForm #send').on('click', function() {
 			dataType: 'json',
 			success: function(data) {
 				if(data.result == true) {
-					alert('success');
+					alert('記事の削除に成功しました。');
 					location.href = '/';
 				}
 				else if(data.result == false){
-					alert('faild');
+					alert('記事の削除に失敗しました。');
 				}
 			},
 			error: function(err) {

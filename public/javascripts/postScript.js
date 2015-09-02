@@ -26,11 +26,11 @@ $(function() {
 				console.log(data);
 
 				if(data.result) {
-					alert('Success.');	
+					alert('記事の作成に成功しました。');	
 					location.href = '/';
 				}
 				else {
-					alert('Faild.');
+					alert('記事の作成に失敗しました。');
 				}
 			},
 			error: function(err) {

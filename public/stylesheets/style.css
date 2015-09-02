@@ -81,3 +81,16 @@ table button.btn {
 .userName {
   text-align: center;
 }
+
+.postLink{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  transition: all .5s;
+}
+
+.postLink i{
+  font-size: 20px;
+  text-align: center;
+  line-height: 28px;
+}

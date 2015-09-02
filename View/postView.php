@@ -54,7 +54,7 @@
 						<input type="file" name="image1" id="image1" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="image_alt1">画像1のAlt属性: </label>
+						<label for="image_alt1">画像1のalt属性: </label>
 						<input type="text" name="image_alt1" id="image_alt1" class="form-control">
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 						<input type="file" name="image2" id="image2" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="image_alt2">画像2のAlt属性:</label>
+						<label for="image_alt2">画像2のalt属性:</label>
 						<input type="text" name="image_alt2" id="image_alt2" class="form-control">
 					</div>
 				</div>

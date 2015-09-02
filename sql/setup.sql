@@ -3,4 +3,4 @@ create table `users` (
 	name text not null,
 	password text not null,
 	type int not null
-)DEFAULT CHARACTER SET=utf8;
+) DEFAULT CHARACTER SET=utf8;
