@@ -3,6 +3,21 @@ $(function() {
 	// 記事の送信
 	$('#postForm #send').on('click', function() {
 
+		var flag = true;
+
+		var inputs = ['#title', '#content', '#author', '#created'];
+
+		for(var i = 0; i < inputs.length; i++) {
+			if($(inputs[i]).val() == '') {
+				flag = false;
+			}
+		}
+
+		if(flag == false) {
+			alert('入力されていない項目があります。');
+			return;
+		}
+
 		if(window.confirm('本当に記事を追加しますか?')) {
 
 		// form　dataを取得
