@@ -17,7 +17,34 @@
 		</div>
 	</section>
 
-	<a href="/post" class="postLink"><button type="button" class="btn btn-fab btn-raised btn-material-red"><i class="glyphicon glyphicon-plus"></i></button></a>
+	<a href="#" class="postLink"><button type="button" class="btn btn-fab btn-raised btn-material-red" data-toggle="modal" data-target="#complete-dialog"><i class="material-icons">file_upload</i></button></a>
 </main>
+
+<div id="complete-dialog" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">画像のアップロード</h4>
+      </div>
+      <div class="modal-body">
+     	<form id="uploadForm" method="POST"> 
+     	<div class="form-group">
+     		<label for="image">画像の選択</label>
+     		<input type="file" class="form-control" name="image" id="image">
+     	</div>
+
+     	<div class="form-group">
+     		<button class="btn btn-info" id="send" type="button">アップロード</button>
+     	</div>
+
+     	</form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info btn-flat" data-dismiss="modal">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="/javascripts/imgControllScript.js"></script>

@@ -88,3 +88,39 @@ function deleteImg(id, imgName) {
 		});
 	}
 }
+
+$('#uploadForm #send').on('click', function() {
+	// form　dataを取得
+	var form = $('#uploadForm').get()[0];
+
+	// 画像を送信するためにform objectを作成
+	var formData = new FormData(form);
+
+	$.ajax({
+		url: '/img/',
+		method: 'POST',
+		dataType: 'json',
+		// dataとしてformDataを送信する設定
+		data: formData,
+		// ajaxがdataを整形しない設定
+		processData: false,
+		// ContentTypeをfalseに指定
+		contentType: false,
+		
+		success: function(data) {
+			console.log(data);
+
+			if(data.result) {
+				alert('画像のアップロードに成功しました。');	
+				location.reload();
+			}
+			else {
+				alert('画像のアップロードに失敗しました。')
+			}
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+
+});
