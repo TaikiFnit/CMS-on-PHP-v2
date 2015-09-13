@@ -23,7 +23,8 @@ class getNewsModel extends appModel
 		else {
 			$sql = 'select * from news where id = :id';
 			$values = array(':id'=> $this->id);
-			return $this->fetch($this->dbh, $sql, $values)[0];
+			$results = $this->fetch($this->dbh, $sql, $values);
+			return $results[0];
 		}
 	}
 }

@@ -13,7 +13,8 @@ class putImgModel extends appModel
 	{
 		$this->sysRoot = $s;
 		$this->imgName = $i;
-		parse_str(file_get_contents('php://input'), $this->putData);
+		$this->putData = $_POST;		
+		//parse_str(file_get_contents('php://input'), $this->putData);
 	}
 
 	function run() {

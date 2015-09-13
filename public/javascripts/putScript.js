@@ -35,6 +35,7 @@ $('#putForm #send').on('click', function() {
 
 		var data = {};
 
+		data['method'] = "PUT";
 		data['title'] = $('#title').val();
 		data['content'] = $('#content').val();
 		data['author'] = $('#author').val();
@@ -48,7 +49,7 @@ $('#putForm #send').on('click', function() {
 
 		$.ajax({
 			url: '/news/' + getRestId(),
-			method: 'PUT',
+			method: 'POST',
 			dataType: 'json',
 			// dataとしてformDataを送信する設定
 			data: data,

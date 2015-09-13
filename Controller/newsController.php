@@ -16,15 +16,25 @@ class newsController
 		$this->method = $m;
 	}
 
+
 	function run() {
+
+		// レンタルサーバーではPUT METHODが使用できないためPOSTで代用
+		if($_POST["method"] == "PUT") {
+			$this->method = "PUT";	
+		}
 
 		require_once $this->sysRoot . '/Model/appModel.php';
 
+		$lowerMethod = mb_strtolower($this->method);
+
+		$modelPath = $this->sysRoot . '/Model/' . $lowerMethod . 'NewsModel.php';
+
 		// HTTP METHOD に対応したModelをインスタンス化
-		require_once $this->sysRoot . '/Model/' . mb_strtolower($this->method) . 'NewsModel.php';
+		require_once $modelPath;
 
 		// define class name
-		$className = mb_strtolower($this->method) . 'NewsModel';
+		$className = $lowerMethod . 'NewsModel';
 
 		// instance the model
 		$methodModel = new $className($this->sysRoot, $this->id);

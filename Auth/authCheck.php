@@ -17,7 +17,7 @@ class authCheck {
 
 		session_start();
 
-		if(isset($_SESSION['id'])) {
+		if(isset($_SESSION['name'])) {
 			// this user is already logged in.
 
 			if ($this->controller == 'login') {

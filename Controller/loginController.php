@@ -21,11 +21,9 @@ class loginController {
 
 		$loginData = $loginModel->run();
 
-		var_dump($loginData);
-
 		if(!empty($loginData)) {
 			// success to login
-			$_SESSION['id'] = $loginData[0]['id'];
+			$_SESSION['name'] = $loginData['name'];
 			header('Location: /');
 		}
 		else {

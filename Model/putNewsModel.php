@@ -14,7 +14,8 @@ class putNewsModel extends appModel
 	{
 		$this->sysRoot = $s;
 		$this->id = $i;
-		parse_str(file_get_contents('php://input'), $this->putData);
+		//parse_str(file_get_contents('php://input'), $this->putData);
+		$this->putData = $_POST;
 		$this->dbh = $this->connectDB();
 	}
 

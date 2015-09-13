@@ -49,7 +49,8 @@ $(function() {
 			}
 		},
 		error: function(err) {
-			alert(err);
+			alert('Error! for more informations, see console.');
+			console.log(err);
 		}
 	});	
 });
