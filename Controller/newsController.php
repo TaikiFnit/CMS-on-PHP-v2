@@ -20,8 +20,10 @@ class newsController
 	function run() {
 
 		// レンタルサーバーではPUT METHODが使用できないためPOSTで代用
-		if($_POST["method"] == "PUT") {
-			$this->method = "PUT";	
+		if(isset($_POST["method"]) == true) {
+			if($_POST["method"] == "PUT") {
+				$this->method = "PUT";	
+			}
 		}
 
 		require_once $this->sysRoot . '/Model/appModel.php';

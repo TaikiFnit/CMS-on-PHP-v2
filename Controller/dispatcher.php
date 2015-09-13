@@ -53,26 +53,30 @@ class dispatcher {
 				case 'imgControll':
 					// pages
 					require_once $this->sysRoot . '/Controller/staticController.php';
-					$controllerInstance = new staticController($this->sysRoot, $controller, $params[3]);
+					$id = isset($params[3]) == true ? $params[3] : '';
+					$controllerInstance = new staticController($this->sysRoot, $controller, $id);
 					break;
 
 				case 'news':
 					// newsに対するCRUD
 					require_once $this->sysRoot . '/Controller/newsController.php';
-					$controllerInstance = new newsController($this->sysRoot, $params[2], $_SERVER["REQUEST_METHOD"]);
+					$method = isset($params[2]) == true ? $params[2] : '';
+					$controllerInstance = new newsController($this->sysRoot, $method, $_SERVER["REQUEST_METHOD"]);
 					break;
 
 				case 'img':
 					// imgに対するCRUD
 					require_once $this->sysRoot . '/Controller/imgController.php';
-					$controllerInstance = new imgController($this->sysRoot, $params[2], $_SERVER['REQUEST_METHOD']);
+					$method = isset($params[2]) == true ? $params[2] : '';
+					$controllerInstance = new imgController($this->sysRoot, $method, $_SERVER['REQUEST_METHOD']);
 					break;
 
 				case 'login':
 					// include loginController
 					if($_SERVER['REQUEST_METHOD'] == 'GET') {
 						require_once $this->sysRoot . '/Controller/staticController.php';
-						$controllerInstance = new staticController($this->sysRoot, $controller, $params[3]);
+						$id = isset($params[3]) == true ? $params[3] : '';
+						$controllerInstance = new staticController($this->sysRoot, $controller, $id);
 					}
 					if($_SERVER['REQUEST_METHOD'] == 'POST') {
 						require_once $this->sysRoot . '/Controller/loginController.php';

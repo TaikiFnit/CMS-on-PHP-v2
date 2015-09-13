@@ -70,6 +70,8 @@
 					</div>
 				</div>
 
+				<input type="hidden" id="method" name="method" value="POST">
+
 				<div class="form-group">
 					<button type="button" id="send" class="btn btn-primary btn-raised">Create!</button>
 				</div>

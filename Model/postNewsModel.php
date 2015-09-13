@@ -34,7 +34,7 @@ class postNewsModel extends appModel
 			$id = 1;
 		}
 
-		$updir = $this->sysRoot . '/public/' . NEWS_IMAGE_PATH;
+		$updir = $this->sysRoot . '/public' . NEWS_IMAGE_PATH;
 
 		$imageName = array();
 
@@ -42,13 +42,26 @@ class postNewsModel extends appModel
 		for($i = 0; $i < $this->postData['images']; $i++) {
 
 			// the class to get the filename extension
-			$info = new SplFileInfo($_FILES['image1']['name']);
+			//$info = new SplFileInfo($_FILES['image1']['name']);
+
+			//for php5.2
+			$path_parts = pathinfo($_FILES['image1']['name']);
+
+			// split for php5.2
+			$imageName[$i] = '';	
+			$imageName[$i] .= $year;	
+			$imageName[$i] .= '-';
+			$imageName[$i] .= $id;	
+			$imageName[$i] .= '-';
+			$imageName[$i] .= (string)((int)$i + 1);	
+			$imageName[$i] .= '.';
+			$imageName[$i] .= $path_parts['extension'];
 
 			// define the image name according to its news_id.
-			$imageName[$i] = $year . '-' . $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
+			//$imageName[$i] = $year . '-' . $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
 
 			// 画像をpublic/news_images/にsave
-			move_uploaded_file($_FILES['image' . ((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);
+			move_uploaded_file($_FILES['image' . (string)((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);
 		}
 
 		$sql = 'insert into news(news_id, title, content, author, created, team, images, image_src1, image_src2, image_alt1, image_alt2) values(:news_id, :title, :content, :author, :created, :team, :images, :image_src1, :image_src2, :image_alt1, :image_alt2)';	
