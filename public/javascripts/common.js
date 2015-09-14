@@ -1,5 +1,9 @@
 $(function() {
 	$.material.init();
+
+	setTimeout(function() {
+		$('.fadeDisplay').fadeIn('slow');
+	}, 1000);
 });
 
 // get the id from end of url

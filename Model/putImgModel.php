@@ -19,11 +19,16 @@ class putImgModel extends appModel
 
 	function run() {
 
-		$base = $this->sysRoot . '/public' . NEWS_IMAGE_PATH;
+		//$base = $this->sysRoot . '/public' . NEWS_IMAGE_PATH;
 
-		$old = $base . $this->imgName;
-		$new = $base . $this->putData['newImgName'];
+		//$old = $base . $this->imgName;
+		//$new = $base . $this->putData['newImgName'];
 
-		return array('result'=> rename($old, $new));
-	}
+		//return array('result'=> rename($old, $new));
+
+		$old = REMOTE_FILE . $this->imgName;
+		$new = REMOTE_FILE . $this->putData['newImgName'];
+
+		return array('result'=> $this->ftpRename($old, $new));
+	}	
 }

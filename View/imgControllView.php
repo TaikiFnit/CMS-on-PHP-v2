@@ -32,6 +32,7 @@
      	<div class="form-group">
      		<label for="image">画像の選択</label>
      		<input type="file" class="form-control" name="image" id="image">
+        <input type="hidden" name="method" id="method" value="POST">
      	</div>
 
      	<div class="form-group">

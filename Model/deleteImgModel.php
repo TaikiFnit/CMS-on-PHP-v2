@@ -16,8 +16,10 @@ class deleteImgModel extends appModel
 
 	function run() {
 
-		$path = $this->sysRoot . '/public' . NEWS_IMAGE_PATH . $this->imgName;
+		//$path = $this->sysRoot . '/public' . NEWS_IMAGE_PATH . $this->imgName;
+		$path = REMOTE_FILE . $this->imgName;
 
-		return array('result'=> unlink($path));
+		//return array('result'=> unlink($path));
+		return array('result'=> $this->ftpDelete($path));
 	}
 }

@@ -17,7 +17,7 @@ class getNewsModel extends appModel
 	function run() {
 
 		if($this->id == '*') {
-			$sql = 'select * from news';
+			$sql = 'select * from news order by created desc';
 			return $this->fetch($this->dbh, $sql, array());
 		}
 		else {

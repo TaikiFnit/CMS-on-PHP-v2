@@ -84,6 +84,13 @@ class dispatcher {
 					}
 					break;	
 
+				case 'truncate': 
+					if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+						require_once $this->sysRoot . '/Controller/truncateController.php';
+						$controllerInstance = new truncateController($this->sysRoot);
+					}
+					break;
+
 				default: 
 					header('Location: /');
 					exit;

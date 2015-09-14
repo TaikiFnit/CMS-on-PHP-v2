@@ -6,12 +6,21 @@ $(function() {
 		dataType: 'json',
 		success: function(data) {
 
+			console.log(data);
+
+			var url = 'http://ta.hira-tech.net/news_image/';
+
 			var code = '';
 
 			for(var i = 0; i < data.length; i++) {
+
+				if(data[i] == '.' || data[i] == '..') {
+					continue;
+				}
+
 				code += '<div class="col-xs-6 col-sm-3 col-lg-2" id="img' + i + '">';
 				code += '<div class="thumbnail">';
-				code += '<img src="/news_image/' + data[i] + '">';
+				code += '<img src="' + url + data[i] + '">';
 				code += '<div class="caption">';
 				code += '<p class="caption-title">' + data[i] + '</p>';
 					code += '<div class="dropdown">';
@@ -45,8 +54,8 @@ function renameImg(id, imgName) {
 		$.ajax({
 			url: '/img/' + imgName,
 			dataType: 'json',
-			method: 'put',
-			data: {'newImgName': named},
+			method: 'POST',
+			data: {'newImgName': named, 'method': 'PUT'},
 			success: function(data) {
 				if(data.result) {
 					alert('ファイル名の変更に成功しました。')

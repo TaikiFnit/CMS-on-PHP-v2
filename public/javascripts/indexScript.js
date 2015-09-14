@@ -53,4 +53,28 @@ $(function() {
 			console.log(err);
 		}
 	});	
+
+	$('#truncateNews').on('click', function() {
+		if(window.confirm('本当にすべての記事を削除しますか?')) {
+			if(window.confirm('本当に本当にすべての記事を削除しますか?')) {
+				$.ajax({
+					url: '/truncate/',
+					dataType: 'json',
+					method: 'delete',
+					success: function(data) {
+						if(data.result) {
+							alert('記事の削除に成功しました。')
+							location.reload();
+						}
+						else {
+							alert('記事の削除に失敗しました。')
+						}
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});
+			}
+		}
+	});
 });

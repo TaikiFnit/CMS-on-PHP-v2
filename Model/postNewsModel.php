@@ -45,7 +45,7 @@ class postNewsModel extends appModel
 			//$info = new SplFileInfo($_FILES['image1']['name']);
 
 			//for php5.2
-			$path_parts = pathinfo($_FILES['image1']['name']);
+			$path_parts = pathinfo($_FILES['image' . (string)((int)$i + 1)]['name']);
 
 			// split for php5.2
 			$imageName[$i] = '';	
@@ -61,12 +61,27 @@ class postNewsModel extends appModel
 			//$imageName[$i] = $year . '-' . $id . '-' . ((int)$i + 1) . '.' . $info->getExtension();
 
 			// 画像をpublic/news_images/にsave
-			move_uploaded_file($_FILES['image' . (string)((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);
+			//move_uploaded_file($_FILES['image' . (string)((int)$i + 1)]['tmp_name'], $updir . $imageName[$i]);
+
+			// update the image using ftp
+			$this->ftpUpload($_FILES['image' . (string)((int)$i + 1)]['tmp_name'], $imageName[$i]);
 		}
 
-		$sql = 'insert into news(news_id, title, content, author, created, team, images, image_src1, image_src2, image_alt1, image_alt2) values(:news_id, :title, :content, :author, :created, :team, :images, :image_src1, :image_src2, :image_alt1, :image_alt2)';	
+		$sql = 'insert into news(news_id, title, content, author, created, team, images, image_src1, image_src2, image_alt1, image_alt2) values(:news_id, :title, :content, :author, :created, :team, :images, :image_src1, :image_src2, :image_alt1, :image_alt2)';
 
-		$values = array(':news_id'=> $id, ':title'=> $this->postData['title'], ':content'=> $this->postData['content'], ':author'=> $this->postData['author'], 'created'=> $this->postData['created'], ':team'=> $this->postData['team'], ':images'=> $this->postData['images'], ':image_src1'=> $imageName[0], ':image_src2'=> $imageName[1], ':image_alt1'=> $this->postData['image_alt1'], ':image_alt2'=> $this->postData['image_alt2']);
+		$values = array(
+			':news_id'=> $id, 
+			':title'=> $this->postData['title'], 
+			':content'=> $this->postData['content'], 
+			':author'=> $this->postData['author'], 
+			'created'=> $this->postData['created'], 
+			':team'=> $this->postData['team'], 
+			':images'=> $this->postData['images'], 
+			':image_src1'=> isset($imageName[0]) == true ? $imageName[0] : '', 
+			':image_src2'=> isset($imageName[1]) == true ? $imageName[1] : '', 
+			':image_alt1'=> $this->postData['image_alt1'], 
+			':image_alt2'=> $this->postData['image_alt2']
+		);
 
 		return array('result'=> $this->insert($this->dbh, $sql, $values));
 	}

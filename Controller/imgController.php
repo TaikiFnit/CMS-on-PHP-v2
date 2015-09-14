@@ -18,6 +18,13 @@ class imgController
 
 	function run() {
 
+		// レンタルサーバーではPUT METHODが使用できないためPOSTで代用
+		if(isset($_POST["method"]) == true) {
+			if($_POST["method"] == "PUT") {
+				$this->method = "PUT";	
+			}
+		}
+		
 		require_once $this->sysRoot . '/Model/appModel.php';
 
 		// HTTP METHOD に対応したModelをインスタンス化
