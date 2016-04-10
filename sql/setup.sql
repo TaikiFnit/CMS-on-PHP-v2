@@ -4,3 +4,18 @@ create table `users` (
 	password text not null,
 	type int not null
 ) DEFAULT CHARACTER SET=utf8;
+
+create table `news` (
+    `id` int not null auto_increment primary key unique,
+    `news_id` int,
+    `title` text,
+    `content` text,
+    `author` text,
+    `team` int,
+    `created` date,
+    `images` int,
+    `image_src1` text,
+    `image_src2` text,
+    `image_alt1` text,
+    `image_alt2` text
+) CHARACTER SET 'utf8';

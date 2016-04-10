@@ -28,7 +28,7 @@ class loginController {
 		}
 		else {
 			// faild to login
-			header('Location: /login');	
+			header('Location: /login');
 		}
 	}
 }
