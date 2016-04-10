@@ -2,7 +2,7 @@
 The CMS version 2.
 
 ## Discription
-このシステムは、情報研究部のホームページ(http://www.irc.hira-tech.net/)に最適化されたCMS(Content Management System)です。
+このシステムは、情報研究部のホームページ ( http://www.irc.hira-tech.net/ ) に最適化されたCMS(Content Management System)です。
 一般的なCMSに比べて、このホームページで必要だと思われる機能(チームごとの記事の配信等)を搭載しています。
 
 ## How to use
